@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         tab1.setIcon(R.drawable.ic_home_black_24dp);
         tab2.setIcon(R.drawable.ic_border_color_black_24dp);
-        tab3.setIcon(R.drawable.ic_textsms_black_24dp);
+        tab3.setIcon(R.drawable.ic_date_range_black_24dp);
 
         tabLayout.setSelectedTabIndicatorColor(Color.BLACK);
 
@@ -49,5 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
 }

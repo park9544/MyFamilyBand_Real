@@ -262,7 +262,7 @@ public class IntroActivity extends AppCompatActivity {
                                     Toast.makeText(IntroActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
 
-                            }, new Response.ErrorListener() {
+                            },  new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(IntroActivity.this, "Error", Toast.LENGTH_SHORT).show();

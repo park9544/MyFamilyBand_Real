@@ -1,51 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:padding="8dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:elevation="4dp"
-        app:cardCornerRadius="8dp">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/relative"
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="450dp"
+            app:mcv_showOtherDates="all"
+            app:mcv_selectionColor="#00F">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:src="@mipmap/ic_launcher_round"/>
+        </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Family Chatting"
-                android:textSize="24sp"
-                android:textStyle="bold"/>
 
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <CalendarView
-        android:id="@+id/calendar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="32dp"
-        android:elevation="4dp"
-        android:clickable="true">
-
-    </CalendarView>
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentBottom="true"/>
 
 
 
-
-</LinearLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
