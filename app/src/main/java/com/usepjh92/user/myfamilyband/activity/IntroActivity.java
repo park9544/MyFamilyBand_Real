@@ -56,10 +56,8 @@ public class IntroActivity extends AppCompatActivity {
     LinearLayout success_layout;
     Button logout_btn;
     LoginButton loginButton;
-    TextView tvStart;
 
     String InsertURL = "http://neworld.dothome.co.kr/android/userInfo.php";
-    String loadUserInfo = "http://neworld.dothome.co.kr/android/UserInfoLoad.php";
 
     AQuery aQuery;
 
@@ -67,17 +65,19 @@ public class IntroActivity extends AppCompatActivity {
     String userName;
     String profilePath;
 
+    TextView clickStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+
+        clickStart = (TextView) findViewById(R.id.clickStart);
         aQuery = new AQuery(this);
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
         // 카카오톡 로그인 버튼
         loginButton = (LoginButton) findViewById(R.id.com_kakao_login);
-        tvStart = (TextView) findViewById(R.id.clickStart);
 
         loginButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -210,9 +210,8 @@ public class IntroActivity extends AppCompatActivity {
 
                 loadKakaoInfo();
 
-
-                tvStart.setVisibility(View.VISIBLE);
-                tvStart.setOnClickListener(new View.OnClickListener() {
+                clickStart.setVisibility(View.VISIBLE);
+                clickStart.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -222,9 +221,9 @@ public class IntroActivity extends AppCompatActivity {
                         intent.putExtra("profileImg", profilePath);
                         startActivity(intent);
                         finish();
-
                     }
                 });
+
             }
 
             @Override
@@ -244,11 +243,11 @@ public class IntroActivity extends AppCompatActivity {
 
         String loadUserInfo = "http://neworld.dothome.co.kr/android/checkUserId.php";
 
-        SimpleMultiPartRequest smpr= new SimpleMultiPartRequest(Request.Method.POST, loadUserInfo, new Response.Listener<String>() {
+        SimpleMultiPartRequest smpr = new SimpleMultiPartRequest(Request.Method.POST, loadUserInfo, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                if(response.equals("fail")){ // 중복값이 없다는 응답.
+                if (response.equals("fail")) { // 중복값이 없다는 응답.
 
                     Toast.makeText(IntroActivity.this, "중복이 없음. 새로 인서트", Toast.LENGTH_SHORT).show();
 
@@ -262,7 +261,7 @@ public class IntroActivity extends AppCompatActivity {
                                     Toast.makeText(IntroActivity.this, response, Toast.LENGTH_SHORT).show();
                                 }
 
-                            },  new Response.ErrorListener() {
+                            }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             Toast.makeText(IntroActivity.this, "Error", Toast.LENGTH_SHORT).show();
@@ -275,7 +274,7 @@ public class IntroActivity extends AppCompatActivity {
                     requestQueue.add(smpr);
 
 
-                }else {
+                } else {
                     Toast.makeText(IntroActivity.this, "중복값이 있습니다.", Toast.LENGTH_SHORT).show();
                 }
 
@@ -287,9 +286,9 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
 
-        smpr.addStringParam("userId", userId+"");
+        smpr.addStringParam("userId", userId + "");
 
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(smpr);
 
     }

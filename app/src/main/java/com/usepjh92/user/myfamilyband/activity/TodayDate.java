@@ -37,7 +37,7 @@ public class TodayDate extends AppCompatActivity {
 
     }
 
-    public void clickBtn(View v){
+    public void clickCom(View v){
 
         String input = editInput.getText().toString();
         String ymdMsgUpload = "http://neworld.dothome.co.kr/android/ymdMsg.php";
@@ -63,6 +63,7 @@ public class TodayDate extends AppCompatActivity {
         requestQueue.add(smpr);
 
 
+
         Intent intent = getIntent();
         intent.putExtra("input" , input);
         setResult(RESULT_OK, intent);
@@ -70,5 +71,12 @@ public class TodayDate extends AppCompatActivity {
         finish();
 
     }
+
+    public void clickCancel(View v){
+
+        finish();
+
+    }
+
 
 }
